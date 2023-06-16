@@ -19,7 +19,7 @@ namespace Connection
         //Histories history = new Histories();
         public void Menu (int limit)
         {
-            var linq = (from e in employee.GetAllEmployee()
+            /*var linq = (from e in employee.GetAllEmployee()
                              join j in job.GetAllJob() on e.JobId equals j.Id
                              join d in department.GetAllDepartment() on e.DepartmentId equals d.Id
                              join l in location.GetAllLocation() on d.LocationId equals l.Id
@@ -36,9 +36,39 @@ namespace Connection
                                  streetAddress = l.StreetAddress,
                                  countryName = c.Name,
                                  regionName = r.Name
-                             }).Take(limit).ToList();
+                             }).Take(limit).ToList();*/
 
-            foreach(var employe in linq)
+            var linq = employee.GetAllEmployee()
+                    .Join(job.GetAllJob(), 
+                        e => e.JobId, j => j.Id, 
+                        (e, j) => new { e, j })
+                    .Join(department.GetAllDepartment(), 
+                        ej => ej.e.DepartmentId, d => d.Id, 
+                        (ej, d) => new { ej.e, ej.j, d })
+                    .Join(location.GetAllLocation(),
+                        ejd => ejd.d.LocationId,  l => l.Id, 
+                        (ejd, l) => new { ejd.e, ejd.j, ejd.d, l })
+                    .Join(country.GetAllCountry(), 
+                        ejdl => ejdl.l.CountryId, c => c.Id, 
+                        (ejdl, c) => new { ejdl.e, ejdl.j, ejdl.d, ejdl.l, c })
+                    .Join(region.GetAllRegion(), 
+                        ejdlc => ejdlc.c.RegionId, r => r.Id,
+                        (ejdlc, r) => new { ejdlc.e, ejdlc.j, ejdlc.d, ejdlc.l, ejdlc.c, r })
+                    .Select(x => new
+                    {
+                        id = x.e.Id,
+                        fullName = $"{x.e.FirstName} {x.e.LastName}",
+                        email = x.e.Email,
+                        phone = x.e.PhoneNumber,
+                        salary = x.e.Salary,
+                        department_Name = x.d.Name,
+                        streetAddress = x.l.StreetAddress,
+                        countryName = x.c.Name,
+                        regionName = x.r.Name
+                    }).Take(limit).ToList();
+
+
+            foreach (var employe in linq)
             {
                 Console.WriteLine($"Id: {employe.id}");
                 Console.WriteLine($"Full Name: {employe.fullName}");
