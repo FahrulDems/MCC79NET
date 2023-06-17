@@ -17,6 +17,7 @@ public class Country
     public int RegionId { get; set; }
 
     private ViewGeneric _viewgeneric = new ViewGeneric();
+
     public List<Country> GetAllCountry()
     {
         var connection = Koneksi.Get();
@@ -55,6 +56,7 @@ public class Country
         connection.Close();
         return countrys;
     }
+
     public Country GetByIdCountry(int id)
     {
         var connection = Koneksi.Get();
@@ -88,6 +90,7 @@ public class Country
         connection.Close();
         return countrygetbyid;
     }
+
     public int InsertCountry(string id, string nama, int regionid)
     {
         var connection = Koneksi.Get();
@@ -131,6 +134,7 @@ public class Country
         connection.Close();
         return result;
     }
+
     public int UpdateCountry(string id, string nama, int regionid)
     {
         var connection = Koneksi.Get();
@@ -174,6 +178,7 @@ public class Country
         connection.Close();
         return result;
     }
+
     public int DeleteCountry(string id)
     {
         var connection = Koneksi.Get();
