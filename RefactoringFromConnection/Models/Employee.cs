@@ -8,6 +8,7 @@ using Connection.Contexts;
 using Connection.Views;
 
 namespace Connection.Models;
+
 public class Employee
 {
     public int Id { get; set; }
@@ -21,7 +22,9 @@ public class Employee
     public int ManagerId { get; set; }
     public string JobId { get; set; }
     public int DepartmentId { get; set; }
+
     private ViewGeneric _viewgeneric = new ViewGeneric();
+
     public List<Employee> GetAllEmployee()
     {
         var connection = Koneksi.Get();

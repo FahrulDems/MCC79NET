@@ -9,11 +9,13 @@ using Connection.Models;
 using Connection.Views;
 
 namespace Connection.Controllers;
+
 public class MenuRegion
 {
     private Region _region = new Region();
     private ViewRegion _viewregion = new ViewRegion();
     private ViewGeneric _viewgeneric = new ViewGeneric();
+
     public void Menu()
     {
         bool isFinish = true;

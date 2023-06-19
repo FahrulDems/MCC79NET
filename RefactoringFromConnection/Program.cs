@@ -12,7 +12,6 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        new Koneksi().TesConnection();
         new MenuUtama().FirstMenu();
     }
 }

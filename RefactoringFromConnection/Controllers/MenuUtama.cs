@@ -20,6 +20,7 @@ public class MenuUtama
     private Employee _employee = new Employee();
     private Jobs _jobs = new Jobs();
     private Histories _histories = new Histories();
+
     public  void FirstMenu()
     {
         bool isFinish = true;
@@ -74,7 +75,7 @@ public class MenuUtama
                 case 9:
                     _viewgeneric.Linq2();
                     new Linq().GetDepartments();
-                    Console.Clear();
+                    Console.ReadKey();
                     break;
                 case 10:
                     isFinish = false;

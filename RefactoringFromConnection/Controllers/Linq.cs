@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Connection.Controllers;
+
 public class Linq
 {
     Employee employee = new Employee();
@@ -17,6 +18,7 @@ public class Linq
     Region region = new Region();
     Jobs job = new Jobs();
     //Histories history = new Histories();
+
     public void GetJoin(int limit)
     {
         var linq = (from e in employee.GetAllEmployee()
@@ -52,6 +54,7 @@ public class Linq
             Console.WriteLine();
         }
     }
+
     public void GetDepartments()
     {
         var employees = (from e in employee.GetAllEmployee()

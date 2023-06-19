@@ -8,11 +8,13 @@ using Connection.Models;
 using Connection.Views;
 
 namespace Connection.Controllers;
+
 public class MenuCountry
 {
     private Country _country = new Country();
     private ViewCountry _viewcountry = new ViewCountry();
     private ViewGeneric _viewgeneric = new ViewGeneric();
+
     public void Menu()
     {
         bool isFinish = true;

@@ -15,7 +15,6 @@ public class ViewGeneric
     public void Menu()
     {
         Console.Clear();
-        new Koneksi().TesConnection();
         Console.WriteLine("============Wellcome To Database db_hr==========");
         Console.WriteLine("================================================");
         Console.WriteLine("                   PILIH MENU                   ");
